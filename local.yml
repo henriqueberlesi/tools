@@ -196,7 +196,7 @@
         loop: 
         - telegram-desktop
         - bitwarden
-
+''
     - block: 
       - name: Downloading Discord
         get_url:
@@ -208,3 +208,7 @@
         shell:
           cmd: 'dpkg -i /home/{{ ansible_user_id }}/Downloads/discord.deb && apt install -fy'
         
+    - block:
+      - name: Disable mouse acceleration
+        shell:
+          cmd: 'gsettings set org.gnome.desktop.peripherals.mouse accel-profile flat'
