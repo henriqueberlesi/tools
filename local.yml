@@ -196,3 +196,15 @@
         loop: 
         - telegram-desktop
         - bitwarden
+
+    - block: 
+      - name: Downloading Discord
+        get_url:
+          url: 'https://discord.com/api/download?platform=linux&format=deb'
+          dest: /home/{{ ansible_user_id }}/Downloads/discord.deb
+      
+      - name: Installing Discord
+        become: true
+        shell:
+          cmd: 'dpkg -i /home/{{ ansible_user_id }}/Downloads/discord.deb && apt install -fy'
+        
