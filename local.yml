@@ -196,7 +196,8 @@
         loop: 
         - telegram-desktop
         - bitwarden
-''
+        - slack
+
     - block: 
       - name: Downloading Discord
         get_url:
@@ -211,4 +212,7 @@
     - block:
       - name: Disable mouse acceleration
         shell:
-          cmd: 'gsettings set org.gnome.desktop.peripherals.mouse accel-profile flat'
+          cmd: 'gsettings set org.gnome.desktop.peripherals.mouse accel-profile flat &&
+          gsettings set org.gnome.desktop.interface clock-show-weekday true &&
+          gsettings set org.gnome.desktop.interface color-scheme prefer-dark &&
+          gsettings set org.gnome.desktop.sound event-sounds false'
